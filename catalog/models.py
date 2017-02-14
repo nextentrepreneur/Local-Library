@@ -5,3 +5,10 @@ class Genre(models.Model):
 	"""
 	Model represening a book genre (e.g. Science Fiction, Non Fiction)
 	"""
+	name = models.CharField(max_length=200,help_text="Enter a book genre (e.g. Science Fiction, French Poetry etc.)")
+    
+    def __str__(self):
+    	"""
+    	String for representing the model object(in admin site etc.)
+    	"""
+    	return self.name
