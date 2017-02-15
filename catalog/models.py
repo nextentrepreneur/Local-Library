@@ -3,16 +3,17 @@ from django.urls import reverse #Used to generate URLs by reversing the URL patt
 import uuid # Required for unique book instances
 # Create your models here.
 class Genre(models.Model):
+
 	"""
 	Model represening a book genre (e.g. Science Fiction, Non Fiction)
 	"""
-	name = models.CharField(max_length=200,help_text="Enter a book genre (e.g. Science Fiction, French Poetry etc.)")
+	name = models.CharField(max_length=200, help_text="Enter a book genre(e.g Science Fiction, Arts etc.)")
+	def __str__(self):
+		"""
+		String representing the Model object(in Admin site etc.)
+		"""
+		return self.name
     
-    def __str__(self):
-        """
-        String for representing the Model object (in Admin site etc.)
-        """
-        return self.name
 
 class Book(models.Model):
 	"""
@@ -27,21 +28,18 @@ class Book(models.Model):
 	genre = models.ManyToManyField(Genre, help_text="Select a genre for this book")
     # ManyToManyField used because genre can contain many books. Books can cover many genres.
     # Genre class has already been defined so we can specify the object above.
-
-
-    def __str__(self):
-    	"""
-    	String for representing the Model object.
-    	"""
-    	return self.title
-
-    def get_absolute_url(self):
-    	"""
-    	Returns the url to access a particular book instance.
-    	"""
-    	return reverse('book-detail',args=[str(self.id)])
-
- class BookInstance(models.Model):
+	def __str__(self):
+		"""
+		Representing Model object
+		"""
+		return self.title	
+	def get_absolute_url(self):
+		"""
+        Returns the url to access a particular book instance.
+        """
+		return reverse('book-detail', args=[str(self.id)])
+    
+class BookInstance(models.Model):
     """
     Model representing a specific copy of a book (i.e. that can be borrowed from the library).
     """
