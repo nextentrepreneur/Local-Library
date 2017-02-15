@@ -9,10 +9,10 @@ class Genre(models.Model):
 	name = models.CharField(max_length=200,help_text="Enter a book genre (e.g. Science Fiction, French Poetry etc.)")
     
     def __str__(self):
-    	"""
-    	String for representing the model object(in admin site etc.)
-    	"""
-    	return self.name
+        """
+        String for representing the Model object (in Admin site etc.)
+        """
+        return self.name
 
 class Book(models.Model):
 	"""
@@ -90,4 +90,3 @@ class Author(models.Model):
 		"""
 
 		return '%s, %s' %(self.last_name, self.first_name)
-		
