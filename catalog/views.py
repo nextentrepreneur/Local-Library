@@ -22,3 +22,12 @@ def index(request):
 		'index.html',
 		context={'num_books':num_books,'num_instances':num_instances,'num_instances_available':num_instances_available,'num_authors':num_authors,'num_visits':num_visits}, #num_visits appended
 		)
+
+# Class based views
+from django.views import generic
+
+class BookListView(generic.ListView):
+	model = Book
+	context_object_name = 'my_book_list' #  your own name for the list as a template variable
+	queryset = Book.objects.filter(title__icontains='war')[:1] # Get 1 book that contains 'war' in its title
+	template_name = 'books/book_list.html'	# specify your own template name/location
