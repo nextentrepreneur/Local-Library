@@ -28,6 +28,10 @@ from django.views import generic
 
 class BookListView(generic.ListView):
 	model = Book
-	context_object_name = 'my_book_list' #  your own name for the list as a template variable
-	queryset = Book.objects.filter(title__icontains='war')[:1] # Get 1 book that contains 'war' in its title
-	template_name = 'books/book_list.html'	# specify your own template name/location
+	paginate_by = 10
+
+class BookDetailView(generic.DetailView):
+	"""
+	Generic class-based detail view for a book.
+	"""
+	model = Book
