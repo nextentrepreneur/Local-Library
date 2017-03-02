@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 j-database-url==0.4.1
 Django==1.10.2
 gunicorn==19.6.0
@@ -93,4 +93,4 @@ xdiagnose==3.8.5
 xkit==0.0.0
 XlsxWriter==0.7.3
 zope.interface==4.2.0
->>>>>>> 8abc0a624d6db672a6d76250b660b89f9987333b
+
